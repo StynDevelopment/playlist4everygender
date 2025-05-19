@@ -1,0 +1,191 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0d0d0d; /* negro intenso */
+    color: #e63946; /* rojo vibrante */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 20px;
+}
+
+header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #e63946;
+    text-shadow: 0 0 10px #e63946;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    color: #fff5f5;
+    max-width: 500px;
+    text-shadow: 0 0 5px #a62828;
+}
+
+.controls {
+    margin-bottom: 30px;
+    color: #e63946;
+}
+
+.controls label {
+    margin-right: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+select {
+    background-color: #1a1a1a;
+    border: 2px solid #e63946;
+    border-radius: 6px;
+    color: #e63946;
+    font-size: 1rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+select:hover, select:focus {
+    background-color: #2a0000;
+    outline: none;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.genre-buttons button {
+    background-color: #1a1a1a;
+    border: 2px solid #e63946;
+    color: #e63946;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 12px #b22222;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.genre-buttons button:hover {
+    background-color: #e63946;
+    color: #0d0d0d;
+    box-shadow: 0 0 20px #ff4c4c;
+}
+
+#playlists-section {
+    width: 100%;
+    max-width: 800px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 20px 25px;
+    box-shadow: 0 0 20px #e63946;
+    color: #f8f8f8;
+}
+
+#playlists-section.hidden {
+    display: none;
+}
+
+#genre-title {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #e63946;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+.playlist {
+    border: 1.5px solid #e63946;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    background-color: #2a0000;
+    box-shadow: 0 0 10px #b22222;
+    transition: transform 0.3s ease;
+}
+
+.playlist:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #ff4c4c;
+}
+
+.playlist h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: #ff7777;
+}
+
+.playlist p {
+    margin-bottom: 12px;
+    color: #f0dede;
+}
+
+.platforms a {
+    color: #e63946;
+    margin-right: 18px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.platforms a:hover {
+    color: #ff7777;
+    text-decoration: underline;
+}
+
+#back-button {
+    display: block;
+    margin: 30px auto 0 auto;
+    background-color: transparent;
+    border: 2px solid #e63946;
+    color: #e63946;
+    font-weight: 700;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 12px #b22222;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+#back-button:hover {
+    background-color: #e63946;
+    color: #0d0d0d;
+    box-shadow: 0 0 20px #ff4c4c;
+}
+
+@media (max-width: 600px) {
+    .genre-buttons button {
+        min-width: 120px;
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    #playlists-section {
+        padding: 15px 20px;
+    }
+
+    #genre-title {
+        font-size: 1.6rem;
+    }
+}

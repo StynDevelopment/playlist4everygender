@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Playlist4EveryGender</title>
+    <link rel="stylesheet" href="style
+.css" />
+</head>
+<body>
+    <header>
+        <h1>Playlist4EveryGender</h1>
+        <p>Proveemos a los usuarios las mejores playlist de cada genero, permitiendole a estos filtrar por duracion de las mismas</p>
+    </header>
+
+    <div class="controls">
+        <label for="time-select">Duración:</label>
+        <select id="time-select">
+            <option value="">-- Selecciona duración --</option>
+            <option value="corta">Corta (&lt; 30 min)</option>
+            <option value="media">Media (30 - 60 min)</option>
+            <option value="larga">Larga (&gt; 60 min)</option>
+        </select>
+    </div>
+
+    <div class="genres">
+        <div class="genre-buttons">
+            <button data-genre="rock" disabled>Rock</button>
+            <button data-genre="pop" disabled>Pop</button>
+            <button data-genre="jazz" disabled>Jazz</button>
+            <button data-genre="electronica" disabled>Electronica</button>
+        </div>
+    </div>
+
+    <section id="playlists-section" class="hidden">
+        <h2 id="genre-title"></h2>
+
+        <div id="corta-playlists"></div>
+        <div id="media-playlists"></div>
+        <div id="larga-playlists"></div>
+
+        <button id="back-button">Volver</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
