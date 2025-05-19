@@ -8,59 +8,59 @@ const cortaContainer = document.getElementById('corta-playlists');
 const mediaContainer = document.getElementById('media-playlists');
 const largaContainer = document.getElementById('larga-playlists');
 
-// Datos de ejemplo (estructura: playlists[genero][duracion])
+// Ejemplo de playlists por género y duración
 const playlists = {
   rock: {
     corta: [
-      { title: "Rock Energético Corta", desc: "Playlists de rock intenso para menos de 30 min." },
-      { title: "Clásicos del Rock Corto", desc: "Hits clásicos y rápidos." }
+      { title: "Rock Rápido", desc: "Un boost de energía en menos de 30 minutos." },
+      { title: "Clásicos Cortos", desc: "Temas legendarios en versión exprés." }
     ],
     media: [
-      { title: "Rock de media duracion", desc: "Rock balanceado para 30-60 min." }
+      { title: "Rock a Buen Ritmo", desc: "Perfecto para media hora de flow." }
     ],
     larga: [
-      { title: "Maratón Rock Larga", desc: "Rock para largas sesiones." }
+      { title: "Rock Sin Pausa", desc: "Sesiones largas para perderte en el rock." }
     ]
   },
   pop: {
     corta: [
-      { title: "Pop Corto y Dulce", desc: "Hits pop para menos de 30 minutos." }
+      { title: "Pop Ligero", desc: "Hits para acompañarte un ratito." }
     ],
     media: [
-      { title: "Pop de media duracion", desc: "Playlists pop entre 30 y 60 minutos." }
+      { title: "Pop para un Break", desc: "Entre 30 y 60 minutos de buen pop." }
     ],
     larga: [
-      { title: "Pop Extendido", desc: "Pop para maratones largas." }
+      { title: "Pop para Largas Horas", desc: "¡No pares de bailar!" }
     ]
   },
   jazz: {
     corta: [
-      { title: "Jazz Chill Corto", desc: "Jazz suave para menos de media hora." }
+      { title: "Jazz en Corto", desc: "Relájate con un poco de jazz suave." }
     ],
     media: [
-      { title: "Jazz de media duracion", desc: "Jazz relajado de 30-60 min." }
+      { title: "Jazz en su Punto", desc: "Ni mucho ni poco, solo lo justo." }
     ],
     larga: [
-      { title: "Jazz Profundo Larga", desc: "Sesión larga de jazz." }
+      { title: "Jazz Profundo", desc: "Ideal para largas sesiones relajantes." }
     ]
   },
   electronica: {
     corta: [
-      { title: "Electrónica Rápida", desc: "Electrónica intensa y corta." }
+      { title: "Electro Rápido", desc: "Sube la energía al toque." }
     ],
     media: [
-      { title: "Electrónica de media duracion", desc: "Sesión media de electrónica." }
+      { title: "Electro Chill", desc: "Buena vibra por 30-60 minutos." }
     ],
     larga: [
-      { title: "Electrónica Maratón", desc: "Electrónica larga para fiesta." }
+      { title: "Fiesta Electrónica", desc: "Para cuando no quieres parar." }
     ]
   }
 };
 
-// Desactivar botones género inicialmente
+// Desactivar los botones al inicio
 genreButtons.forEach(btn => btn.disabled = true);
 
-// Al cambiar la duración, activamos botones y ocultamos sección
+// Activar géneros cuando se selecciona duración
 timeSelect.addEventListener('change', () => {
   const selectedTime = timeSelect.value;
   genreButtons.forEach(btn => btn.disabled = selectedTime === "");
@@ -68,14 +68,14 @@ timeSelect.addEventListener('change', () => {
   clearPlaylistsContainers();
 });
 
-// Al hacer clic en género, mostrar playlists filtradas por duración y género
+// Al elegir un género, mostrar playlists correspondientes
 genreButtons.forEach(button => {
   button.addEventListener('click', () => {
     const genre = button.getAttribute('data-genre');
     const time = timeSelect.value;
     if (!time) return;
 
-    genreTitle.textContent = `Playlists de ${capitalize(genre)} (${capitalize(time)})`;
+    genreTitle.textContent = `Playlists de ${capitalize(genre)} - ${capitalize(time)}`;
     mostrarPlaylistsPorGeneroYDuracion(genre, time);
 
     playlistsSection.classList.remove('hidden');
@@ -83,6 +83,7 @@ genreButtons.forEach(button => {
   });
 });
 
+// Botón "Atrás"
 backButton.addEventListener('click', () => {
   playlistsSection.classList.add('hidden');
   timeSelect.value = "";
@@ -90,17 +91,18 @@ backButton.addEventListener('click', () => {
   clearPlaylistsContainers();
 });
 
+// Mostrar playlists filtradas
 function mostrarPlaylistsPorGeneroYDuracion(genre, time) {
   clearPlaylistsContainers();
 
-  // Mostrar solo el contenedor de la duración seleccionada y ocultar los demás
+  // Ocultar todos los contenedores al inicio
   cortaContainer.style.display = 'none';
   mediaContainer.style.display = 'none';
   largaContainer.style.display = 'none';
 
   let container;
 
-  switch(time) {
+  switch (time) {
     case 'corta':
       container = cortaContainer;
       break;
@@ -117,7 +119,7 @@ function mostrarPlaylistsPorGeneroYDuracion(genre, time) {
   if (playlists[genre] && playlists[genre][time]) {
     if (playlists[genre][time].length === 0) {
       const msg = document.createElement('p');
-      msg.textContent = "No hay playlists disponibles para esta categoría.";
+      msg.textContent = "No hay playlists por ahora para esta combinación.";
       container.appendChild(msg);
       return;
     }
@@ -128,6 +130,7 @@ function mostrarPlaylistsPorGeneroYDuracion(genre, time) {
   }
 }
 
+// Crea un div con la info de cada playlist
 function crearPlaylistDiv(playlist) {
   const div = document.createElement('div');
   div.classList.add('playlist');
@@ -143,12 +146,14 @@ function crearPlaylistDiv(playlist) {
   return div;
 }
 
+// Limpia los contenedores
 function clearPlaylistsContainers() {
   cortaContainer.innerHTML = "";
   mediaContainer.innerHTML = "";
   largaContainer.innerHTML = "";
 }
 
+// Capitaliza la primera letra
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
